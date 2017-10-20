@@ -1,12 +1,19 @@
 import os
 import sys
 import json
+#from yt_search import youtube_search
 from datetime import datetime
 
 import requests
 from flask import Flask, request
 
 app = Flask(__name__)
+
+#For YT
+# Set DEVELOPER_KEY to the API key value 
+DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -41,6 +48,9 @@ def webhook():
 
                     if "hello" in message_text.lower() or "hi" in message_text.lower():
                         send_message(sender_id, "Hi there, my name is Botzy!")
+                    elif "youtube" in message_text.lower():
+                        vid_title = message_text[8:]
+                        send_message(sender_id, "Video title is %s"%(vid_title))
                     else:
                         send_message(sender_id, "Roger that!")
 
