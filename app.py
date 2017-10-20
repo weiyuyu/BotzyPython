@@ -50,7 +50,7 @@ def webhook():
                         send_message(sender_id, "Hi there, my name is Botzy!")
                     elif "youtube" in message_text.lower():
                         search_title = message_text[8:]
-                        vid_ids[], vid_titles[] = youtube_search(search_title)
+                        vid_ids, vid_titles = youtube_search(search_title)
 
                         send_message(sender_id, "Here are some results for your search")
                         for vid in vid_titles:
