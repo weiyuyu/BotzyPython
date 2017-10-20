@@ -1,15 +1,57 @@
+"""
+This bot listens to port 5002 for incoming connections from Facebook. It takes
+in any messages that the bot receives and echos it back.
+"""
+from flask import Flask, request
+from pymessenger.bot import Bot
+
+app = Flask(__name__)
+
+ACCESS_TOKEN = ""
+VERIFY_TOKEN = ""
+bot = Bot(ACCESS_TOKEN)
+
+
+@app.route("/", methods=['GET', 'POST'])
+def hello():
+    if request.method == 'GET':
+        if request.args.get("hub.verify_token") == VERIFY_TOKEN:
+            return request.args.get("hub.challenge")
+        else:
+            return 'Invalid verification token'
+
+    if request.method == 'POST':
+        output = request.get_json()
+        for event in output['entry']:
+            messaging = event['messaging']
+            for x in messaging:
+                if x.get('message'):
+                    recipient_id = x['sender']['id']
+                    if x['message'].get('text'):
+                        message = x['message']['text']
+                        bot.send_text_message(recipient_id, message)
+                    if x['message'].get('attachments'):
+                        for att in x['message'].get('attachments'):
+                            bot.send_attachment_url(recipient_id, att['type'], att['payload']['url'])
+                else:
+                    pass
+        return "Success"
+
+
+if __name__ == "__main__":
+    app.run(port=5002, debug=True)
+
+
+"""
 import os
 import sys
 import json
-from pymessenger.bot import Bot
 from datetime import datetime
 
 import requests
 from flask import Flask, request
 
 app = Flask(__name__)
-
-bot = Bot("EAAa2iYe9rN0BAHB6RcQrGikXL7QfZCAwEQv3ZBCl7BFg5yibbShQTfxhraSNaE4UqZCLcbV0uKP9ADnCHA83CtvVum2K0vZB0ShmWGvdpPX4OH7YyWNT1w9gxrNdomxiEjZClfbZBcZBZAQRjCUhwNfsOyWt2VBH18zIWDALFEOWvjZA7NSKga1yw")
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -39,12 +81,11 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    sender_name = bot.get_user_info["first_name"]
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     if "what's your name" in message_text.lower():
-                        send_message(sender_id, "Hi %s, my name is Botzy!"%sender_name)
+                        send_message(sender_id, "Hi there, my name is Botzy!")
                     else:
                         send_message(sender_id, "Roger that!")
 
@@ -98,3 +139,4 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
 
 if __name__ == '__main__':
     app.run(debug=True)
+"""

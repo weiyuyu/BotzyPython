@@ -1,5 +1,5 @@
 import json
-
+import six
 
 from .bot import Bot
 
