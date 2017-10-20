@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from pymessenger import Bot
 from datetime import datetime
 
 import requests
@@ -8,6 +9,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+bot = Bot("EAAa2iYe9rN0BAHB6RcQrGikXL7QfZCAwEQv3ZBCl7BFg5yibbShQTfxhraSNaE4UqZCLcbV0uKP9ADnCHA83CtvVum2K0vZB0ShmWGvdpPX4OH7YyWNT1w9gxrNdomxiEjZClfbZBcZBZAQRjCUhwNfsOyWt2VBH18zIWDALFEOWvjZA7NSKga1yw")
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -37,11 +39,12 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                    sender_name = bot.get_user_info["first_name"]
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     if "what's your name" in message_text.lower():
-                        send_message(sender_id, "Hi, my name is Botzy!")
+                        send_message(sender_id, "Hi %s, my name is Botzy!"%sender_name)
                     else:
                         send_message(sender_id, "Roger that!")
 
