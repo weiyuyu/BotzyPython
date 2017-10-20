@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-#from yt_search import youtube_search
+from yt_search import youtube_search
 from datetime import datetime
 
 import requests
@@ -49,8 +49,13 @@ def webhook():
                     if "hello" in message_text.lower() or "hi" in message_text.lower():
                         send_message(sender_id, "Hi there, my name is Botzy!")
                     elif "youtube" in message_text.lower():
-                        vid_title = message_text[8:]
-                        send_message(sender_id, "Video title is %s"%(vid_title))
+                        search_title = message_text[8:]
+                        vid_ids[], vid_titles[] = youtube_search(search_title)
+
+                        send_message(sender_id, "Here are some results for your search")
+                        for vid in vid_titles:
+                            send_message(sender_id, vid)
+
                     else:
                         send_message(sender_id, "Roger that!")
 

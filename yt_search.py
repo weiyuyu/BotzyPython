@@ -22,7 +22,6 @@ def youtube_search(title):
   videos_id = []
   videos_title = []
 
-
   # Add each result to the appropriate list, and then display the lists of
   # matching videos, channels, and playlists.
   for search_result in search_response.get("items", []):
