@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from pymessenger import Bot
+from pymessenger.bot import Bot
 from datetime import datetime
 
 import requests
