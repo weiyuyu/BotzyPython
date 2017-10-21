@@ -9,7 +9,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-#For YT
+#For Youtube
 # Set DEVELOPER_KEY to the API key value 
 DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
 YOUTUBE_API_SERVICE_NAME = "youtube"
