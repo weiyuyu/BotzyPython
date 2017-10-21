@@ -53,8 +53,8 @@ def webhook():
                         vid_ids, vid_titles = youtube_search(search_title)
 
                         send_message(sender_id, "Here are some results for your search")
-                        for vid in vid_titles:
-                            send_message(sender_id, vid)
+                        for i, vid in enumerate(vid_titles):
+                            send_message(sender_id, "%s: https://www.youtube.com/watch?v=%s"%(vid,vid_ids[i]))
 
                     else:
                         send_message(sender_id, "Roger that!")
