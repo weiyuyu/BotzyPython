@@ -16,6 +16,7 @@ def youtube_search(title):
   # query term.
   search_response = youtube.search().list(
     q=title,
+    part="id,snippet",
     maxResults=5
   ).execute()
 
