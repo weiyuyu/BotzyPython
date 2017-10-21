@@ -48,20 +48,20 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    if "hello" in message_text.lower() or "hi" in message_text.lower():
+"""                   if "hello" in message_text.lower() or "hi" in message_text.lower():
                         send_message(sender_id, "Hi %s, my name is Botzy! Type 'help' to see what I can do for you!"%(sender_first_name))
-                    """elif "youtube" in message_text.lower():
+                    elif "youtube" in message_text.lower():
                         search_title = message_text[8:]
                         vid_ids, vid_titles = youtube_search(search_title)
 
                         send_message(sender_id, "Here are some results for your search!")
                         for i, vid in enumerate(vid_titles):
                             send_message(sender_id, "%s: https://www.youtube.com/watch?v=%s"%(vid,vid_ids[i]))
-"""
+
                     elif "help" in message_text.lower():
                         send_message(sender_id, "Right now I can search for relevant videos on Youtube with your input of keywords. To do so, please type in 'youtube' followed by your search term(s).")
-                    else:
-                        send_message(sender_id, "Sorry, %s. I don't understand that yet T.T"%(sender_first_name))
+                   else:
+"""                 send_message(sender_id, "Sorry, %s. I don't understand that yet T.T"%(sender_first_name))
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
