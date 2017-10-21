@@ -43,9 +43,9 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    json_string = requests.get("https://graph.facebook.com/%s?fields=first_name&access_token=EAAa2iYe9rN0BAHB6RcQrGikXL7QfZCAwEQv3ZBCl7BFg5yibbShQTfxhraSNaE4UqZCLcbV0uKP9ADnCHA83CtvVum2K0vZB0ShmWGvdpPX4OH7YyWNT1w9gxrNdomxiEjZClfbZBcZBZAQRjCUhwNfsOyWt2VBH18zIWDALFEOWvjZA7NSKga1yw"%(sender_id))
-                    
-                    sender_first_name = json_string["first_name"]
+                    response = requests.get("https://graph.facebook.com/%s?fields=first_name&access_token=EAAa2iYe9rN0BAHB6RcQrGikXL7QfZCAwEQv3ZBCl7BFg5yibbShQTfxhraSNaE4UqZCLcbV0uKP9ADnCHA83CtvVum2K0vZB0ShmWGvdpPX4OH7YyWNT1w9gxrNdomxiEjZClfbZBcZBZAQRjCUhwNfsOyWt2VBH18zIWDALFEOWvjZA7NSKga1yw"%(sender_id))
+                    user_data = response.json()
+                    sender_first_name = user_data["first_name"]
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
