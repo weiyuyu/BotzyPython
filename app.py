@@ -9,12 +9,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-#For Youtube
-# Set DEVELOPER_KEY to the API key value 
-DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSION = "v3"
-
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
