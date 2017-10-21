@@ -29,4 +29,4 @@ def youtube_search(title):
       videos_id.append(search_result["id"]["videoId"])
       videos_title.append(search_result["snippet"]["title"])
   
-  return videos_id[], videos_title
+  return videos_id, videos_title
