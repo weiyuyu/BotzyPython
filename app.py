@@ -50,7 +50,7 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     if "hello" in message_text.lower() or "hi" in message_text.lower():
-                        send_message(sender_id, "Hi %s, my name is Botzy!"%sender_id)
+                        send_message(sender_id, "Hi %s, my name is Botzy!"%(sender_id))
                     elif "youtube" in message_text.lower():
                         search_title = message_text[8:]
                         vid_ids, vid_titles = youtube_search(search_title)
