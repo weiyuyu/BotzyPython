@@ -43,11 +43,12 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                    sender_first_name = messaging_event["sender"]["first_name"]
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     if "hello" in message_text.lower() or "hi" in message_text.lower():
-                        send_message(sender_id, "Hi there, my name is Botzy!")
+                        send_message(sender_id, "Hi %s, my name is Botzy!"%(sender_first_name))
                     elif "youtube" in message_text.lower():
                         search_title = message_text[8:]
                         vid_ids, vid_titles = youtube_search(search_title)
