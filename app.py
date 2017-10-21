@@ -7,6 +7,11 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
+# Set YT DEVELOPER_KEY to the API key value 
+DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
