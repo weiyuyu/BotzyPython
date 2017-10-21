@@ -1,6 +1,6 @@
-from site-packages.googleapiclient.discovery import build
-from site-packages.googleapiclient.errors import HttpError
-from site-packages.oauth2client.tools import argparser
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from oauth2client.tools import argparser
 
 
 # Set DEVELOPER_KEY to the API key value 
