@@ -1,12 +1,13 @@
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.tools import argparser
+import keys
 
 
 # Set DEVELOPER_KEY to the API key value 
-DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSION = "v3"
+DEVELOPER_KEY = keys.yt_dev_key
+YOUTUBE_API_SERVICE_NAME = keys.yt_api_service_name
+YOUTUBE_API_VERSION = keys.yt_api_ver
 
 def youtube_search(title):
   youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,

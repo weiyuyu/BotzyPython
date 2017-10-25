@@ -1,16 +1,18 @@
 import os
 import sys
 import json
+import keys
 from yt_search import youtube_search
 from datetime import datetime
+
 
 import requests
 from flask import Flask, request
 
 # Set YT DEVELOPER_KEY to the API key value 
-DEVELOPER_KEY = "AIzaSyDp29Ou9donbgn_N0hnzeELpuP641qAKLc"
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSION = "v3"
+DEVELOPER_KEY = keys.yt_dev_key
+YOUTUBE_API_SERVICE_NAME = keys.yt_api_service_name
+YOUTUBE_API_VERSION = keys.yt_api_ver
 
 app = Flask(__name__)
 
