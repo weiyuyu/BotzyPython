@@ -4,7 +4,7 @@ from oauth2client.tools import argparser
 import keys
 
 
-# Set DEVELOPER_KEY to the API key value 
+# Set DEVELOPER_KEY to the API key values
 DEVELOPER_KEY = keys.yt_dev_key
 YOUTUBE_API_SERVICE_NAME = keys.yt_api_service_name
 YOUTUBE_API_VERSION = keys.yt_api_ver
