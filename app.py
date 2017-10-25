@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-import keys
+from keys import Keys
 from yt_search import youtube_search
 from datetime import datetime
 
@@ -10,6 +10,7 @@ import requests
 from flask import Flask, request
 
 # Set YT DEVELOPER_KEY to the API key value 
+keys = Keys()
 DEVELOPER_KEY = keys.yt_dev_key
 YOUTUBE_API_SERVICE_NAME = keys.yt_api_service_name
 YOUTUBE_API_VERSION = keys.yt_api_ver
